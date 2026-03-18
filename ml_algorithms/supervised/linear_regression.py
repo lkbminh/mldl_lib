@@ -2,19 +2,20 @@ import numpy as np
 from ...utils.data_manipulation import gen_batches, shuffle_data
 
 class LinearRegression:
-    def __init__(self, learning_rate = 0.01, epochs = 100):
+    def __init__(self, learning_rate = 0.01, epochs = 100, mode_name = '_BGD'):
         self.learning_rate = learning_rate
         self.epochs = epochs
         self.parameters = None
+        self.mode_name = mode_name
 
-    def fit(self, X, y, mode_name='_BGD'):
+    def fit(self, X, y):
         X_temp = np.insert(X, 0, 1, axis=1)
-        
-        if hasattr(self, mode_name):
-            mode = getattr(self, mode_name)
+
+        if hasattr(self, self.mode_name):
+            mode = getattr(self, self.mode_name)
             mode(X_temp, y)
         else:
-            raise RuntimeError(f'{mode_name} is undefined.')
+            raise RuntimeError(f'{self.mode_name} is undefined.')
 
     def predict(self, X):
         X_temp = np.c_[np.ones(X.shape[0]), X]

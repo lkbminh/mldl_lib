@@ -6,6 +6,16 @@ def MSE(y_true, y_pred):
 def RMSE(y_true, y_pred):
     return np.sqrt(MSE(y_true, y_pred))
 
+def R2(y_true, y_pred):
+    mean_ = np.mean(y_true)
+    ss_res = np.sum((y_true - y_pred) ** 2)
+    ss_tot = np.sum((y_true - mean_) ** 2)
+
+    if ss_tot == 0:
+        return 0
+    
+    return 1 - ss_res/ss_tot
+
 class StandardScaler:
     def __init__(self):
         self.mean_ = None
