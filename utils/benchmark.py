@@ -1,6 +1,6 @@
 import time
 import numpy
-from data_operation import RMSE, R2
+from utils.data_operation import RMSE, R2
 
 class Benchmarker:
     def __init__(self):

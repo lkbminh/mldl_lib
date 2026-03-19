@@ -1,5 +1,5 @@
 import numpy as np
-from ...utils.data_manipulation import gen_batches, shuffle_data
+from utils.data_manipulation import gen_batches, shuffle_data
 
 class LinearRegression:
     def __init__(self, learning_rate = 0.01, epochs = 100, mode_name = '_BGD'):

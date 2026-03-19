@@ -27,8 +27,6 @@ class StandardScaler:
         return self
 
     def transform(self, X):
-        if self.mean_ == None:
-            raise RuntimeError('fit has not been run')
         return (X - self.mean_) / self.std_
     
     def fit_transform(self, X):
