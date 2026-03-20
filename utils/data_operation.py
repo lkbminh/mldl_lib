@@ -16,6 +16,19 @@ def R2(y_true, y_pred):
     
     return 1 - ss_res/ss_tot
 
+def ConfusionMatrix(y_true, y_pred):
+    TP = np.sum((y_true == 1) & (y_pred == 1))
+    TN = np.sum((y_true == 0) & (y_pred == 0))
+    FP = np.sum((y_true == 0) & (y_pred == 1))
+    FN = np.sum((y_true == 1) & (y_pred == 0))
+
+    accuracy = (TP + TN) / (TP + TN + FP + FN)
+    precision = TP / (TP + FP)
+    recall = TP / (TP + FN)
+    f1_score = 2 * (precision * recall) / (precision + recall)
+
+    return accuracy, precision, recall, f1_score
+
 class StandardScaler:
     def __init__(self):
         self.mean_ = None
